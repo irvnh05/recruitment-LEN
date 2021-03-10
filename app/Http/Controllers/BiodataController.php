@@ -17,8 +17,6 @@ class BiodataController extends Controller
                 
         $user = Auth::user();
         $item = Biodata::where('users_id', '=', Auth::user()->id)->first();
-        
-
         // if($request->session()->has('users_id', 'Auth::user()->id')) {
         //     return Biodata::create([
         //     'users_id' => Auth::user()->id,
@@ -29,14 +27,16 @@ class BiodataController extends Controller
         //     'user' => $user
         // ]);
         // }
-                if($item != null) {
+        if($item != null) {
              return view('pages.user.biodata.index',[
             'item' => $item,
-            'user' => $user
+            'user' => $user,
         ]);
         } else {
             Biodata::create([
             'users_id' => Auth::user()->id,
+            'foto'     =>  'assets/datadiri/user.png',
+            'Nama_Lengkap' => Auth::user()->name,
         ]);
         return redirect()->route('test');
 
@@ -58,26 +58,34 @@ class BiodataController extends Controller
 
 
 
-    public function update(Request $request ,$redirect )
-    // {
-    //     $data = $request->all();
+    public function update(BiodataRequest $request ,$redirect)
+    // $data = $request->all();
 
-    //     $item = Biodata::first();
+    // $data['slug'] = Str::slug($request->name);
 
-    //     $item->update($data);
+    // $item = Program::findOrFail($id);
 
-    //     return view('pages.user.biodata.index',[
-    //         'item' => $item
-    //     ]);
-    // }
+    // $item->update($data);
+
+    // return redirect()->route('program.index');
     {
+        // $id   = Biodata::with(['user'])->where('users_id', '=', Auth::user()->id)->first();
         $data = $request->all();
+        // $item = Biodata::with(['user'])->findOrFail($id);
 
+        // $item = Biodata::with(['user'])->where('users_id', '=', Auth::user()->id)->get();
         $item = Biodata::with(['user'])->where('users_id', '=', Auth::user()->id)->first();
         // $data['foto'] = $request->file('foto')->store('assets/datadiri', 'public');
 
+        if  ($request->file('foto') == null) {
+            $file = "";
+        }else{
+            $data['foto'] = $file = $request->file('foto')->store('assets/datadiri', 'public');  
+        }
+
         $item->update($data);
 
+        // session()->flash('success', 'Profile updated successfully.');
         return redirect()->route($redirect);
     }
 

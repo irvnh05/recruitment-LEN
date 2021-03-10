@@ -13,8 +13,8 @@
             <div class="row">
             
               <div class="col-lg-8">
-              <img
-                src="{{ Storage::url($pengumuman->first()->photos ?? '') }}"
+              <img 
+                src="{{ Storage::url($pengumuman->photos ?? '') }}"
                 alt=""
                 class="bingkai_pengumuman"
               />
@@ -65,31 +65,3 @@
 
 
 
-{{-- 
-@push('addon-script')
-    <script src="/vendor/vue/vue.js"></script>
-    <script>
-      var gallery = new Vue({
-        el: "#gallery",
-        mounted() {
-          AOS.init();
-        },
-        data: {
-          activePhoto: 0,
-          photos: [
-            @foreach ($data->galleries as $gallery)
-            {
-              id: {{ $gallery->id }},
-              url: "{{ Storage::url($gallery->photos) }}",
-            },
-            @endforeach
-          ],
-        },
-        methods: {
-          changeActive(id) {
-            this.activePhoto = id;
-          },
-        },
-      });
-    </script>
-@endpush --}}

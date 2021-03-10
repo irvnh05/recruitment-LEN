@@ -1,7 +1,7 @@
 @extends('layouts.dashboardv1')
 
 @section('title')
- Dara Pribadi
+ Data Pribadi
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
 >
   <div class="container-fluid">
     <div class="dashboard-heading">
-      <h2 class="dashboard-title"> Dara Pribadi</h2>
+      <h2 class="dashboard-title"> Data Pribadi</h2>
       <p class="dashboard-subtitle">
         {{-- Make store that profitable --}}
       </p>
@@ -29,35 +29,49 @@
             
             <div class="card">
               <div class="card-body">
+                              @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="row">
-
                 <div class="col-12 col-md-4 ">
-                  {{-- <input  type="file" name="foto"/> --}}
                   <div class="round">
+                  @if(old('foto',$item->foto) == 'assets/datadiri/user.png')  
                    <img
-                    {{-- src="{{ Storage::url($item->first()->foto ?? '') }}" --}}
+                    src="{{ Storage::url($item->foto ?? '') }}" 
                     class=""
-                    alt=""
-                    height="200px" width="auto"        
+                    alt="" 
                   /> 
+                  <h4>Upload Foto</h4>
+                  <input type="file" class="form-control"  placeholder="Upload Foto" name="foto"/>
+                  @else
+
+                  <label>
+                  <img
+                    src="{{ Storage::url($item->foto ?? '') }}" 
+                    class=""
+                    alt="" 
+                  /> 
+                  <input type="file" class="form-control"  placeholder="Upload Foto" name="foto"/>
+                  </label>
+                  @endif        
+     
                 </div>
-                  </div>
-                {{-- <div class="col-12 col-md-8">
-
-                      <div class="product-title">Foto</div>
-                      <div class="product-subtitle">
-                        <input type="file" class="form-control" name="foto" value="{{ Storage::url($item->first()->foto ?? '') }}"  />
-                      </div> --}}
-
+                </div>
                 <div class="col-12 col-md-8">
                   <div class="row">
-                    <div class="col-12 col-md-6">
+                    <!-- <div class="col-12 col-md-6">
                       <div class="product-title">Foto</div>
                       <div class="product-subtitle">
-                        <input type="file" class="form-control" name="foto"/>
+                        <input type="file" class="form-control"  name="foto"/>
                       </div>
-                    </div>
-             <div class="col-12 col-md-6">
+                    </div>-->
+                    <div class="col-12 col-md-6"> 
                       <div class="product-title">Nama Lengkap</div>
                       <div class="product-subtitle">
                         <input class="form-control" name="Nama_Lengkap" value="{{ $item->Nama_Lengkap }}"  />
@@ -78,23 +92,47 @@
                     <div class="col-12 col-md-6">
                       <div class="product-title">Jenis Kelamin</div>
                       <div class="product-subtitle">
-                         <input type="text" class="form-control" name="Jenis_Kelamin" value="{{ $item->Jenis_Kelamin }}" required />
+                         <!-- <input type="text" class="form-control" name="Jenis_Kelamin" value="{{ $item->Jenis_Kelamin }}" required /> -->
+                         <select name="Jenis_Kelamin" required class="form-control" value="{{ $item->Jenis_Kelamin }}" required >
+                         <option @if(old('Jenis_Kelamin',$item->Jenis_Kelamin) == 'Laki-Laki') selected @endif >
+                         Laki-Laki
+                       </option>
+                       <option @if(old('Jenis_Kelamin',$item->Jenis_Kelamin) == 'Perempuan') selected @endif >
+                           Perempuan
+                       </option>
+                          <!-- <option value="Laki-Laki">Laki-Laki</option>
+                          <option value="Perempuan">Perempuan</option> -->
+                        </select>
                       </div>
                     </div>
                     <div class="col-12 col-md-6">
                       <div class="product-title">Status Perkawinan</div>
                       <div class="product-subtitle">
-                         <input type="text"class="form-control" name="Status_Perkawinan" value="{{ $item->Status_Perkawinan }}" required />
+                         <!-- <input type="text"class="form-control" name="Status_Perkawinan" value="{{ $item->Status_Perkawinan }}" required /> -->
+                          <select name="Status_Perkawinan" required class="form-control" value="{{ $item->Status_Perkawinan }}" required >
+                          <option @if(old('Status_Perkawinan',$item->Status_Perkawinan) == 'Kawin') selected @endif >
+                            Kawin
+                          </option>
+                          <option @if(old('Status_Perkawinan',$item->Status_Perkawinan) == 'Belum Kawin') selected @endif >
+                            Belum Kawin
+                          </option>
+                          <option @if(old('Status_Perkawinan',$item->Status_Perkawinan) == 'Cerai Hidup') selected @endif >
+                            Cerai Hidup
+                          </option>
+                          <option @if(old('Status_Perkawinan',$item->Status_Perkawinan) == 'Cerai Mati') selected @endif >
+                            Cerai Mati
+                          </option>
+                        </select>
                       </div>
                     </div>
                     <div class="col-12 col-md-6">
-                      <div class="product-title">Tinggi Badan</div>
+                      <div class="product-title">Tinggi Badan (CM)</div>
                       <div class="product-subtitle">
                          <input type="number" class="form-control" name="Tinggi_Badan" value="{{ $item->Tinggi_Badan }}" required />
                       </div>
                     </div>
                     <div class="col-12 col-md-6">
-                      <div class="product-title">Berat Badan</div>
+                      <div class="product-title">Berat Badan (KG)</div>
                       <div class="product-subtitle">
                          <input type="number" class="form-control" name="Berat_Badan" value="{{ $item->Berat_Badan }}" required />
                       </div>
