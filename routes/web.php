@@ -83,6 +83,7 @@ Route::prefix('admin')
         Route::resource('soal','SoalController');
         Route::resource('pelamar','PelamarController');      
         Route::resource('report','ReportController');    
+        Route::get('/result/{id}', 'PelamarController@result')->name('pelamar.result');
         Route::get('/return', 'ReportController@returnReport')->name('report.return');
         Route::get('/return/pdf/{daterange}', 'ReportController@returnReportPdf')->name('report.return_pdf');
         Route::get('soal/detail/{id}', 'SoalController@detail')->name('detail-soal');

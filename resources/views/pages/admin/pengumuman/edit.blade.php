@@ -29,7 +29,7 @@
                   </ul>
               </div>
           @endif
-          <form action="{{ route('user.update', $item->id) }}" method="post" enctype="multipart/form-data">
+          <form action="{{ route('pengumuman.update', $item->id) }}" method="post" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="card">
@@ -37,31 +37,47 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Nama User</label>
-                      <input type="text" class="form-control" name="name" value="{{ $item->name }}" required />
+                      <label>Judul</label>
+                      <input type="text" class="form-control" name="judul" value="{{ $item->judul }}" required />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Email User</label>
-                      <input type="text" class="form-control" name="email" value="{{ $item->email }}" required />
-                       <small>Kosongkan jika tidak ingin mengganti password</small>
+                      <!-- <label>Foto</label>
+                      <div class="round">
+                  @if(old('photos',$item->photos) == 'assets/datadiri/user.png')  
+                   <img
+                    src="{{ Storage::url($item->photos ?? '') }}" 
+                    class=""
+                    alt="" 
+                  /> 
+                  <h4>Upload Foto</h4>
+                  <input type="file" class="form-control"  placeholder="Upload photos" name="photos"/>
+                  @else
+
+                  <label>
+                  <img
+                    src="{{ Storage::url($item->photos ?? '') }}" 
+                    class=""
+                    alt="" 
+                  /> 
+                  <input type="file" class="form-control"  placeholder="Upload Foto" name="photos"/>
+                  </label>
+                  @endif         -->
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Password User</label>
-                      <input type="text" class="form-control" name="password" />
-                      <small>Kosongkan jika tidak ingin mengganti password</small>
+                      <label>Deksripsi</label>
+                      <input type="text" class="form-control" name="deksripsi" value="{{ $item->deksripsi }}" required />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Roles</label>
-                      <select name="roles" required class="form-control">
-                          <option value="{{ $item->roles }}" selected>Tidak diganti</option>
-                          <option value="ADMIN">Admin</option>
-                          <option value="USER">User</option>
+                      <label>Kategori</label>
+                      <select name="kategori" required class="form-control" value="{{ $item->kategori }}" required >
+                          <option value="aktiv">Aktiv</option>
+                          <option value="non">Non</option>
                         </select>
                     </div>
                   </div>

@@ -13,7 +13,7 @@ class DashboardController extends Controller
     public function index()
     {
         $lowongan = Lowongan::count();
-        $pengumuman = Pengumuman::where('kategori', '=', 'aktiv')->first();
+        $pengumuman = Pengumuman::where('kategori', 'aktiv')->get();
         $items = Berkas::with(['lowongan', 'biodata'])                    
                       ->whereHas('biodata', function($biodata){
                         $biodata->where('users_id', Auth::user()->id);

@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
 use App\Pengumuman;
-
 use App\Http\Requests\Admin\PengumumanRequest;
-
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -36,6 +33,9 @@ class PengumumanController extends Controller
                                         Aksi
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="action' .  $item->id . '">
+                                <a class="dropdown-item" href="' . route('pengumuman.edit', $item->id) . '">
+                                Sunting
+                                </a>
                                     <form action="' . route('pengumuman.destroy', $item->id) . '" method="POST">
                                         ' . method_field('delete') . csrf_field() . '
                                         <button type="submit" class="dropdown-item text-danger">
@@ -91,7 +91,7 @@ class PengumumanController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
     }
 
     /**
@@ -102,7 +102,11 @@ class PengumumanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Pengumuman::findOrFail($id);
+
+        return view('pages.admin.pengumuman.edit',[
+            'item' => $item
+        ]);
     }
 
     /**
@@ -112,9 +116,26 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductGalleryRequest $request, $id)
+    public function update(PengumumanRequest $request, $id)
     {
-        //
+        // $data = $request->all();
+
+        $item = Pengumuman::findOrFail($id);
+
+        // $item->update($data);
+
+        // return redirect()->route('pengumuman.index');
+        $data = $request->all();
+
+        if  ($request->file('photos') == null) {
+            $file = "";
+        }else{
+            $data['photos'] = $file = $request->file('photos')->store('assets/pengumuman', 'public');  
+        }
+
+        $item->update($data);
+
+        return redirect()->route('pengumuman.index');
     }
 
     /**

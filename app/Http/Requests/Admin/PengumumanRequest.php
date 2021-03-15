@@ -26,7 +26,7 @@ class PengumumanRequest extends FormRequest
         return [
             'judul' => 'required|max:255',
             'deksripsi' => 'required',
-            'photos' => 'required|image',
+            // 'photos' => 'required|image',
         ];
     }
 }

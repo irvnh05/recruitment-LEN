@@ -76,7 +76,6 @@ class BiodataController extends Controller
         // $item = Biodata::with(['user'])->where('users_id', '=', Auth::user()->id)->get();
         $item = Biodata::with(['user'])->where('users_id', '=', Auth::user()->id)->first();
         // $data['foto'] = $request->file('foto')->store('assets/datadiri', 'public');
-
         if  ($request->file('foto') == null) {
             $file = "";
         }else{

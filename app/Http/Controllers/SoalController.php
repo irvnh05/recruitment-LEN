@@ -239,12 +239,14 @@ class SoalController extends Controller
     $soal = Soal::find($id);
     $nilai = Jawab::where('soals_id', $id)->where('users_id', auth()->user()->id)->sum('score');
     $cek = Jawab::where('soals_id', $id)->where('users_id', auth()->user()->id)->first();
-    $update = Berkas::with(['lowongan','biodata'])
+    // $cekhasil = Jawab::where('users_id', auth()->user()->id)->get();
+    $update = Berkas::with(['lowongan','biodata']) 
                         // ->where('biodatas_id', Auth::user()->id)
                         // ->first();
                     ->whereHas('biodata', function($biodata){
                         $biodata->where('users_id', Auth::user()->id);
                     })->first();
+                    // dd($update);
   // if ($cek->score)
   //     {
   //       elseif ($cek >= 80)
@@ -280,7 +282,9 @@ class SoalController extends Controller
             })->first()->update([
             'lowongans_id' => $update->lowongan->id,
             'biodatas_id' =>$update->biodata->id,
+            // 'jawabs_id' =>$cek->users_id,
             'status' => 'Selesei Ujian',
+            
             // 'status' => $cek->score >= 80 = 'Lolos',
              ]);
     return view('pages.user.pertanyaan.finish', compact('soal', 'nilai','update'));

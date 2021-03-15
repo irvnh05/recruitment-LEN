@@ -29,7 +29,11 @@ Dashboard | E-Recruitment
                         <h4>Pengumuman Terbaru</h4>
                     </div>
                     <div class="card-body">
-                        <h1>{{ $pengumuman->deksripsi }} </h1>
+<!-- perulangan karena isinya array -->
+                        @foreach ($pengumuman as $object)
+                            {{ $object->deksripsi }}
+                        @endforeach
+
                     </div>
                 </div>
             </div>

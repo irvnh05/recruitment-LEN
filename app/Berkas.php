@@ -8,7 +8,7 @@ class Berkas extends Model
 {
 
     protected $fillable = [
-         'lowongans_id','biodatas_id', 'status'
+         'lowongans_id','biodatas_id', 'status','jawabs_id',
     ];
 
     protected $hidden = [
@@ -27,4 +27,7 @@ class Berkas extends Model
         return $this->belongsTo( Biodata::class, 'biodatas_id','id' );
     }
 
+    public function jawab(){
+        return $this->hasOne( Jawab::class,'id', 'jawabs_id');
+    }
 }

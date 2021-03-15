@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Berkas;
 use App\Http\Requests\Admin\BerkasRequest;
-
+use App\Jawab;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Str;
 // use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
@@ -17,7 +18,7 @@ class PelamarController extends Controller
     {
                 if (request()->ajax()) {
             $query =  Berkas::with(['lowongan', 'biodata'])->get();       
-
+         
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
                     return '
@@ -32,7 +33,13 @@ class PelamarController extends Controller
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="action' .  $item->id . '">
                                     <a class="dropdown-item" href="' . route('pelamar.edit', $item->id) . '">
-                                        Sunting
+                                        Sunting Status
+                                    </a>
+                                    <a class="dropdown-item text-warning" href="' . route('pelamar.show', $item->id) . '">
+                                        Lihat CV
+                                    </a>
+                                    <a class="dropdown-item text-info" href="' . route('pelamar.result', $item->biodata->users_id) . '">
+                                        Lihat Hasil Test
                                     </a>
                                     <form action="' . route('pelamar.destroy', $item->id) . '" method="POST">
                                         ' . method_field('delete') . csrf_field() . '
@@ -105,7 +112,7 @@ class PelamarController extends Controller
          'lowongan', 'biodata'
         ])->findOrFail($id);
 
-        return view('pages.user.lamaran.detail',[
+        return view('pages.admin.pelamar.show',[
             'item' => $item
         ]);
     }
@@ -157,5 +164,19 @@ class PelamarController extends Controller
         return redirect()->route('lamaran.index');
 
     }
+// lihat nilai
+    public function result($id)
+    {
+        $cek = Jawab::with([
+            'user', 'detailSoal'
+           ])->where('users_id', $id)->get();
+  
+        // $cek = Jawab::where('soals_id', $id)->where('users_id', auth()->user()->id);
+        // dd($cek);
+        return view('pages.admin.pelamar.detail',[
+            'cek' => $cek
+        ]);
+    }
+
 }
 
