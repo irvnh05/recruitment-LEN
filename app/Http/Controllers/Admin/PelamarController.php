@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Berkas;
 use App\Http\Requests\Admin\BerkasRequest;
 use App\Jawab;
+use App\Biodata;
 use Illuminate\Http\Request;
+use Mail;
+use App\Mail\StatusSuccess;
 use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Str;
 // use Illuminate\Support\Facades\Storage;
@@ -35,7 +38,7 @@ class PelamarController extends Controller
                                     <a class="dropdown-item" href="' . route('pelamar.edit', $item->id) . '">
                                         Sunting Status
                                     </a>
-                                    <a class="dropdown-item text-warning" href="' . route('pelamar.show', $item->id) . '">
+                                    <a class="dropdown-item text-warning" href="' . route('pelamar.show',  $item->biodatas_id) . '">
                                         Lihat CV
                                     </a>
                                     <a class="dropdown-item text-info" href="' . route('pelamar.result', $item->biodata->users_id) . '">
@@ -108,12 +111,16 @@ class PelamarController extends Controller
      */
     public function show($id)
     {
-        $item = Berkas::with([
-         'lowongan', 'biodata'
-        ])->findOrFail($id);
+        $item =  Berkas::with(['lowongan', 'biodata'])
+        ->where('biodatas_id', $id)->first()
+    ;
+        
+        // ->whereHas('users_id', auth()->user()->id)->get();
 
+        // dd($item);
         return view('pages.admin.pelamar.show',[
             'item' => $item
+
         ]);
     }
 
@@ -142,10 +149,15 @@ class PelamarController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-
-        $item = Berkas::findOrFail($id);
+        $item =  Berkas::with(['lowongan', 'biodata'])->findOrFail($id);
+        // $item = Berkas::findOrFail($id);
 
         $item->update($data);
+
+        // kirim notifikasi ke email untuk interview
+        Mail::to($item->biodata->user->email)->send(
+            new StatusSuccess($item)
+        );
 
         return redirect()->route('pelamar.index');
     }
