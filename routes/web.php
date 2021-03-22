@@ -90,6 +90,7 @@ Route::prefix('admin')
         Route::get('buatsoal/{id}', 'SoalController@soaldetailcreate')->name('buat-soal');
         Route::post('buat/{id}', 'SoalController@store1')->name('store1');     
         Route::get('/get-detail-soal', 'SoalController@dataDetailSoal')->name('elearning.get-detail-soal');        
+        Route::get('/download/{file}','Controller@download')->name('download');
     });
 
 Auth::routes();

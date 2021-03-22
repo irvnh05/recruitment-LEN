@@ -24,8 +24,8 @@ class PengalamanKerjaController extends Controller
     {
         if (request()->ajax()) {
             // $query = PengalamanKerja::query();
-        $query = PengalamanKerja::with(['user'])                    
-                      ->whereHas('user', function($user){
+        $query = PengalamanKerja::with(['biodata'])                    
+                      ->whereHas('biodata', function($user){
                         $user->where('users_id', Auth::user()->id);
                     })->get();
     
@@ -89,18 +89,25 @@ class PengalamanKerjaController extends Controller
     public function store(Request $request )
     {
         $biodata1 = Biodata::where('users_id', '=', Auth::user()->id)->first();
-
+        // $kerja = PengalamanKerja::where('biodatas_id',$biodata1->id)->get();
+// dd($kerja);
             PengalamanKerja::create([
             'Nama_Perusahaan'  => $request->Nama_Perusahaan,
             'Tahun'  =>  $request->Tahun,
             'Tugas_TJU'  =>  $request->Tugas_TJU,
             'Gaji'  =>  $request->Gaji,
             'Alasan_Berhenti'  =>  $request->Alasan_Berhenti,
-            'users_id' => Auth::user()->id,
+            // 'users_id' => Auth::user()->id,
             'biodatas_id' =>  $biodata1->id,
-
        ]);
 
+     
+//     $biodata1 =  biodata::update([
+//         'pengalaman_kerjas_id	'  => $kerja->id,
+//    ]);
+//    Biodata::where('users_id', '=', Auth::user()->id)->first()->update([
+//     'pengalaman_kerjas_id	'  => $kerja->id,
+// ]);
     //     $item = PengalamanKerja::where('users_id', '=', Auth::user()->id)->first();
     //     $biodata = Biodata::where('users_id', '=', Auth::user()->id)->first();
     //     $biodata->update([

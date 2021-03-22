@@ -1,7 +1,7 @@
 @extends('layouts.dashboardv1')
 
 @section('title')
-     Success Page
+     Gagal Ujian
 @endsection
 
 @section('content')
@@ -13,15 +13,14 @@
             <div class="col-lg-6 text-center">
               <img src="" alt="" class="mb-4" />
               <h2>
-               Selamat Lamaran Anda Akan Terkirim!
+              Maaf anda belum melakukan pengajuan lamaran!
               </h2>
               <p>
-                Silahkan tunggu informasi selanjutnya dari kami dan kami akan
-                menginformasikan secepat mungkin & segera kerjakan pertanyaan yang telah disediakan!
+                Silahkan ajukan lamaran.
               </p>
               <div>
-                <a href="{{ route('pertanyaan') }}" class="btn btn-primary w-50 mt-4">
-                  Kerjakan Soal Sekarang
+                <a href="{{ route('lihatlowongan.index') }}" class="btn btn-primary w-50 mt-4">
+                  Lihat Lowongan 
                 </a>
               </div>
             </div>

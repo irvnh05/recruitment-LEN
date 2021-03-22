@@ -208,6 +208,9 @@
                                                                 @elseif ($data->status=="Selesei Review")
                                                                 <br> Selamat Pengajuan Lamaran Kamu Dengan Posisi Lowongan {{ $data->lowongan->posisi }}. Dinyatakan,<h4> {{ $data->status }}<h4>
                                                                 <br> Dan Tunggu Informasi Selanjutnya Perihal Status Lamaran Selanjutnya.</br>            
+                                                                @elseif ($data->status=="Review")
+                                                                <br> Selamat Pengajuan Lamaran Kamu Dengan Posisi Lowongan {{ $data->lowongan->posisi }}. Dinyatakan,<h4> Sedang {{ $data->status }}<h4>
+                                                                <br> Dan Tunggu Informasi Selanjutnya Perihal Status Lamaran Selanjutnya.</br>                                                                         
                                                                 @else
                                                                 <br> Mohon Maaf Pengajuan Lamaran Kamu Dengan Posisi Lowongan {{ $data->lowongan->posisi }}. Dinyatakan,<h4> {{ $data->status }}<h4>
                                                                 @endif

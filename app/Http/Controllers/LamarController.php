@@ -9,29 +9,23 @@ use Exception;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Mail;
+use App\Mail\StatusSuccess;
 class LamarController extends Controller
 {
     public function process($id)
     {
-
-        $lamars = Berkas::with(['lowongan','biodata'])
-                        // ->where('biodatas_id', Auth::user()->id)
-                        // ->first();  
-                    ->whereHas('biodata', function($biodata){
-                        $biodata->where('users_id', Auth::user()->id);
-                    // ->where('status', 'Selesei Ujian');               
-                    })
-                    ->get();
+  
+                        
         $status = Berkas::with(['lowongan','biodata'])  
-        ->where('status', 'Riview') ->whereHas('biodata', function($biodata){
+        ->where("status" ,'Review') ->whereHas('biodata', function($biodata){
             $biodata->where('users_id', Auth::user()->id);
         })
         ->first();        
         // $status = Berkas::with(['lowongan','biodata'])
         //             ->where('status', 'Review')
         //             ->get();                    
-
+        // dd($status);
         // $status = Berkas::query()->where('status', 'Selesei Ujian')->firstOrFail();
         // $biodata = Biodata::where('users_id', '=', Auth::user()->id)->first();
 
@@ -46,15 +40,18 @@ class LamarController extends Controller
     //     return redirect()->route('sukses', $berkas->id);
     // }
     // $lamars != null 
-    if( $status !== null)  {
+    if( $status !== null )  {
         // return view('lihatlowongan');
         return view('pages.user.lowongan.gagal');
+   }elseif ( $biodata == null  ){
+          return view('pages.user.lowongan.gagaldata');
    } else {
     $berkas = Berkas::create([
         'lowongans_id' => $id,
         'biodatas_id' =>$biodata->id,
-        'status' => 'Riview'
+        'status' => 'Review'
         ]);
+
    return redirect()->route('sukses', $berkas->id);
 
    }

@@ -14,10 +14,10 @@ class PengalamanKerja extends Model
     protected $hidden = [
         
     ];
-    public function user(){
-        return $this->belongsTo( User::class, 'users_id', 'id');
-    }
-    // public function biodata(){
-    //     return $this->belongsTo( Biodata::class, 'biodatas_id', 'id');
+    // public function user(){
+    //     return $this->belongsTo( User::class, 'users_id', 'id');
     // }
+    public function biodata(){
+        return $this->belongsTo( Biodata::class, 'biodatas_id', 'id');
+    }
 }

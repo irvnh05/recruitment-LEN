@@ -15,6 +15,7 @@ use App\User;
 use App\Jawab;
 use App\Detailsoal;
 use App\Berkas;
+use App\Lowongan;
 
 class SoalController extends Controller
 {
@@ -168,8 +169,20 @@ class SoalController extends Controller
     // $soal = Soal::query()->get();
     $soal = Soal::with(['user'])->where('tampil','aktiv')->get();
     // $check = Jawab::where('soals_id', $soal->id)->where('users_id', Auth::user()->id)->first();
-    return view('pages.user.pertanyaan.index', compact('user','soal'));
+    // return view('pages.user.pertanyaan.index', compact('user','soal'));
     // return view('halaman-siswa.ujian', compact('user', 'pakets'));
+    $status = Berkas::with(['lowongan','biodata'])  
+    ->whereHas('biodata', function($biodata){
+        $biodata->where('users_id', Auth::user()->id);
+    })
+    ->first();    
+   
+    
+    if( $status == null )  {
+      return view('pages.user.pertanyaan.gagal');
+    } else {
+      return view('pages.user.pertanyaan.index', compact('user','soal'));
+    }
   }
 
   public function detailUjian($id)

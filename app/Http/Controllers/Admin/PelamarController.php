@@ -7,9 +7,12 @@ use App\Berkas;
 use App\Http\Requests\Admin\BerkasRequest;
 use App\Jawab;
 use App\Biodata;
+use App\DataKeluarga;
+use App\Lampiran;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\StatusSuccess;
+use App\PengalamanKerja;
 use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Str;
 // use Illuminate\Support\Facades\Storage;
@@ -112,18 +115,32 @@ class PelamarController extends Controller
     public function show($id)
     {
         $item =  Berkas::with(['lowongan', 'biodata'])
-        ->where('biodatas_id', $id)->first()
-    ;
+        ->where('biodatas_id', $id)->first();
+        $kerja = PengalamanKerja::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+        $keluarga = DataKeluarga::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+        $berkas = Lampiran::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+        
+        
         
         // ->whereHas('users_id', auth()->user()->id)->get();
 
         // dd($item);
         return view('pages.admin.pelamar.show',[
-            'item' => $item
+            'item' => $item,
+            'kerja' => $kerja,
+            'keluarga' => $keluarga,
+            'berkas' => $berkas
 
         ]);
     }
-
+    
+    public function download($file){
+        $file_path = public_path('uploads/cv/'.$file);
+        return response()->download( $file_path);
+    }
     /**
      * Show the form for editing the specified resource.
      *

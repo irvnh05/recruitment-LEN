@@ -14,5 +14,8 @@ class DataKeluarga extends Model
     protected $hidden = [
         
     ];
-
+    
+    public function biodata(){
+        return $this->belongsTo( Biodata::class, 'biodatas_id', 'id');
+    }
 }
