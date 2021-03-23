@@ -296,7 +296,104 @@
                 </div>
                 <div class="modal-body" id="modalpendidikan">
                 <div class="col-12 row">
-                        <!-- the result to be displayed apply here -->
+                <h5 class="modal-title">Pendidikan Formal</h5>
+                @foreach ($formal as $formal1)
+                
+                <div class="col-12 col-md-6">
+                        <div class="product-title">Nama Lembaga</div>
+                        <div class="product-subtitle">
+                          <input type="text" class="form-control" name="Nama_Lembaga" value="{{ $formal1->Nama_Lembaga }}" required disabled/>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Tahun</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Tahun" value="{{ $formal1->Tahun }}" required disabled/>              
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Jurusan</div>
+                        <div class="product-subtitle">
+                           <input type="text" class="form-control" name="Jurusan" value="{{ $formal1->Jurusan }}" required disabled/>                 
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Tingkat</div>
+                        <div class="product-subtitle">
+                          <input type="text" class="form-control" name="Tingkat" value="{{ $formal1->Tingkat }}" required disabled/>
+                        </div>
+                      </div>
+                    <span aria-hidden="true">&times;</span>
+                    @endforeach
+                    <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title">Pendidikan Non Formal</h5>
+                    @foreach ($non as $non1)
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Nama Lembaga</div>
+                        <div class="product-subtitle">
+                          <input type="text" class="form-control" name="Nama_Lembaga" value="{{ $non1->Nama_Lembaga }}" required disabled/>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Tahun</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Tahun" value="{{ $non1->Tahun }}" required disabled/>              
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Jurusan</div>
+                        <div class="product-subtitle">
+                           <input type="text" class="form-control" name="Jurusan" value="{{ $non1->Jurusan }}" required disabled/>                 
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Tingkat</div>
+                        <div class="product-subtitle">
+                          <input type="text" class="form-control" name="Tingkat" value="{{ $non1->Tingkat }}" required disabled/>
+                        </div>
+                      </div>
+                    <span aria-hidden="true">&times;</span>
+                    @endforeach          
+                    <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title">Kemampuan Bahasa</h5>
+                    @foreach ($bahasa as $bahasa1)
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Bahasa</div>
+                        <div class="product-subtitle">
+                          <input type="text" class="form-control" name="Bahasa" value="{{ $bahasa1->Bahasa }}" required disabled/>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Lisan</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Lisan" value="{{ $bahasa1->Lisan }}" required disabled/>              
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Tulisan</div>
+                        <div class="product-subtitle">
+                           <input type="text" class="form-control" name="Tulisan" value="{{ $bahasa1->Tulisan }}" required disabled/>                 
+                        </div>
+                      </div>
+                    <span aria-hidden="true">&times;</span>
+                    @endforeach        
+                    <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title">Riwayat Beasiswa</h5>
+                    @foreach ($beasiswa as $beasiswa1)
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Nama Lembaga</div>
+                        <div class="product-subtitle">
+                          <input type="text" class="form-control" name="Lembaga" value="{{ $beasiswa1->Lembaga }}" required disabled/>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Tempat</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Tempat" value="{{ $beasiswa1->Tempat }}" required disabled/>              
+                        </div>
+                      </div>
+                    <span aria-hidden="true">&times;</span>
+                    @endforeach                       
                         <div class="form-group">
 
 </div>
@@ -372,8 +469,117 @@
                     </button>
                 </div>
                 <div class="modal-body" id="modalpenunjang">
-                <div class="col-12 row">
-                        <!-- the result to be displayed apply here -->
+                <div class="col-12 row">     
+                    <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title">Pengalaman Organisasi</h5>
+                    @foreach ($organisasi as $organisasi1)
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Nama Organisasi</div>
+                        <div class="product-subtitle">
+                          <input type="text" class="form-control" name="Nama_Organisasi" value="{{ $organisasi1->Nama_Organisasi }}" required disabled/>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Jabatan</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Jabatan" value="{{ $organisasi1->Jabatan }}" required disabled/>              
+                        </div>
+                      </div>
+                    <span aria-hidden="true">&times;</span>
+                    @endforeach          
+                    <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title">Harapan</h5>
+                    @foreach ($harapan as $harapan1)
+                      <div class="col-12 col-md-6">
+                        <div class="product-title"> Harapan Karir</div>
+                        <div class="product-subtitle">
+                          <input type="text" class="form-control" name="Harapan_Karir" value="{{ $harapan1->Harapan_Karir }}" required disabled/>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Permintaan Gaji</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Permintaan_Gaji" value="{{ $harapan1->Permintaan_Gaji }}" required disabled/>              
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Minat Posisi Lain Jika Ditolak</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Minat_Posisi_Jika_Ditolak" value="{{ $harapan1->Minat_Posisi_Jika_Ditolak }}" required disabled/>              
+                        </div>
+                      </div>
+                    <span aria-hidden="true">&times;</span>
+                    @endforeach    
+                    <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title">Saudara / Kerabat Di LEN</h5>
+                    @foreach ($sdrkwnlen as $sdrkwnlen1)
+                      <div class="col-12 col-md-6">
+                        <div class="product-title"> Nama Lengkap</div>
+                        <div class="product-subtitle">
+                          <input type="text" class="form-control" name="Nama_Lengkap" value="{{ $sdrkwnlen1->Nama_Lengkap }}" required disabled/>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Hubungan</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Hubungan" value="{{ $sdrkwnlen1->Hubungan }}" required disabled/>              
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Bagian</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Bagian" value="{{ $organisasi1->Bagian }}" required disabled/>              
+                        </div>
+                      </div>
+                    <span aria-hidden="true">&times;</span>
+                    @endforeach        
+                    <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title">Proses Seleksi Di Tempat Lain</h5>
+                    @foreach ($seleksiperusahaanlain as $seleksiperusahaanlain1)
+                      <div class="col-12 col-md-6">
+                        <div class="product-title"> Nama Perusahaan</div>
+                        <div class="product-subtitle">
+                          <input type="text" class="form-control" name="Perusahaan" value="{{ $seleksiperusahaanlain1->Perusahaan }}" required disabled/>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Posisi</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Posisi" value="{{ $seleksiperusahaanlain1->Posisi }}" required disabled/>              
+                        </div>
+                      </div>
+                    <span aria-hidden="true">&times;</span>
+                    @endforeach 
+                    <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title">Info lain</h5>
+                    @foreach ($infolain as $infolain1)
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Melamar Melalui</div>
+                        <div class="product-subtitle">
+                          <input type="text" class="form-control" name="Melamar_Melalui" value="{{ $infolain1->Melamar_Melalui }}" required disabled/>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Diperkenalkan Oleh</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Diperkenalkan_Oleh" value="{{ $infolain1->Diperkenalkan_Oleh }}" required disabled/>              
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Kegiatan Lain</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Kegiatan_Lain" value="{{ $infolain1->Kegiatan_Lain }}" required disabled/>              
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <div class="product-title">Hobi</div>
+                        <div class="product-subtitle">
+                         <input type="text" class="form-control" name="Hobi" value="{{ $infolain1->Hobi }}" required disabled/>              
+                        </div>
+                      </div>
+                                            
+                    <span aria-hidden="true">&times;</span>
+                    @endforeach                                 
                         <div class="form-group">
 
 </div>

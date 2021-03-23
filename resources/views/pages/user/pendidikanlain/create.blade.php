@@ -39,27 +39,28 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Tahun</label>
-                      <input type="date" class="form-control" name="Tahun" required />
+                      <input type="text" class="form-control" name="Tahun" required />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Jurusan</label>
+                      <label>Bidang Keilmuan</label>
                       <input type="text" class="form-control" name="Jurusan"required />
                     </div>
                   </div>
                  <div class="col-md-12">
                     <div class="form-group">
-                      <label>Tingkat</label>
-                      <input type="number" class="form-control" name="Tingkat"required />
+                      <label>Keterangan</label>
+                      <input type="text" class="form-control" name="Tingkat"required />
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col text-right">
+                  <a href="{{ url()->previous() }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>Kembali</a>
                     <button
                       type="submit"
-                      class="btn btn-success px-5"
+                      class="btn btn-primary px-5"
                     >
                       Save Now
                     </button>

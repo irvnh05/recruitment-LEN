@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\SdrKwnLen;
 use App\Http\Requests\Admin\KeluargaSaudaraRequest;
-
+use App\Biodata;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -78,8 +79,16 @@ class KeluargaController extends Controller
      */
     public function store(KeluargaSaudaraRequest $request)
     {
-        $data = $request->all();
-        SdrKwnLen::create($data);
+        // $data = $request->all();
+        // SdrKwnLen::create($data);
+        $biodata1 = Biodata::where('users_id', '=', Auth::user()->id)->first();
+        SdrKwnLen::create([
+            'Nama_Lengkap'  => $request->Nama_Lengkap,
+            'Hubungan'  =>  $request->Hubungan,
+            'Bagian'  =>  $request->Bagian,
+            // 'users_id' => Auth::user()->id,
+            'biodatas_id' =>  $biodata1->id,
+            ]);
 
         return redirect()->route('pengalamanorganisasi.index');
     }

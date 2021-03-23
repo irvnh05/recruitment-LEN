@@ -69,7 +69,7 @@
                               </li>
   
                               <li>
-                                  <a href="{{ route('keluarga.index') }}">Data Keluarga</a>
+                                  <a href="{{ route('datakeluarga.index') }}">Data Keluarga</a>
                               </li>
 
                               <li>

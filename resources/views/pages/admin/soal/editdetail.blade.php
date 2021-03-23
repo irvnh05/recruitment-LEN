@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Soal
+ Pertanyaan
 @endsection
 
 @section('content')
@@ -12,9 +12,9 @@
 >
   <div class="container-fluid">
     <div class="dashboard-heading">
-        <h2 class="dashboard-title">Soal</h2>
+        <h2 class="dashboard-title">Pertanyaan</h2>
         <p class="dashboard-subtitle">
-            Create New Soal
+            Edit Detail "{{ $item->id }}" Pertanyaan
         </p>
     </div>
     <div class="dashboard-content">
@@ -29,7 +29,8 @@
                   </ul>
               </div>
           @endif
-          <form action="{{ route('store1' , $soal->id) }}" method="post" enctype="multipart/form-data">
+          <form action="{{ route('soaldetailupdate', $item->id) }}" method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="card">
               <div class="card-body">
@@ -37,65 +38,77 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Pertanyaan</label>
-                      <textarea name="pertanyaan" id="editor"></textarea>
+                      <input type="text" class="form-control" name="pertanyaan" value="{{ $item->pertanyaan }}" required />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Pilihan A</label>
-                       <textarea name="pila" id="editor1"></textarea>
+                      <input type="text" class="form-control" name="pila" value="{{ $item->pila }}" required />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Pilihan B</label>
-                      <textarea name="pilb" id="editor2"></textarea>
+                       <input type="text" class="form-control" name="pilb" value="{{ $item->pilb }}" required />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Pilihan C</label>
-                      <textarea name="pilc" id="editor3"></textarea>
+                       <input type="text" class="form-control" name="pilc" value="{{ $item->pilc }}" required />
                     </div>
                   </div>
-                  <div class="col-md-12">
+
+                                 <div class="col-md-12">
                     <div class="form-group">
                       <label>Pilihan D</label>
-                      <textarea name="pild" id="editor4"></textarea>
+                       <input type="text" class="form-control" name="pild" value="{{ $item->pild }}" required />
                     </div>
                   </div>
-                  <div class="col-md-12">
+
+                                 <div class="col-md-12">
                     <div class="form-group">
                       <label>Pilihan E</label>
-                      <textarea name="pile" id="editor5"></textarea>
+                       <input type="text" class="form-control" name="pile" value="{{ $item->pile }}" required />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Kunci</label>
-                      <div class="radio">
-                      <label><input type="radio" name="kunci" id="a" value="A"> Jawaban <b>A</b></label> &nbsp;&nbsp;&nbsp;
-                      <label><input type="radio" name="kunci" id="b" value="B"> Jawaban <b>B</b></label> &nbsp;&nbsp;&nbsp;
-                      <label><input type="radio" name="kunci" id="c" value="C"> Jawaban <b>C</b></label> &nbsp;&nbsp;&nbsp;
-                      <label><input type="radio" name="kunci" id="d" value="D"> Jawaban <b>D</b></label> &nbsp;&nbsp;&nbsp;
-                      <label><input type="radio" name="kunci" id="e" value="E"> Jawaban <b>E</b></label>
-                </div>
-                    </div>
-                                      <div class="col-md-12">
-                    <div class="form-group">
-                      <label>Score</label>
-                      <input type="text" class="form-control" name="score" required />
+                       <input type="text" class="form-control" name="kunci" value="{{ $item->kunci }}" required />
                     </div>
                   </div>
-                                    <div class="col-md-12">
+               
+                  <div class="col-md-12">
                     <div class="form-group">
-                      <label>Status</label>
-                      <div class="radio">
-                      <label><input type="radio" name="status"  value="N"> Tidak Aktiv</label> &nbsp;&nbsp;&nbsp;
-                      <label><input type="radio" name="status"  value="Y"> Aktiv </label> &nbsp;&nbsp;&nbsp;
-                </div>
+                      <label>Status </label>
+                      <select name="status"  value="{{ $item->status }}" required class="form-control">
+                          <option value="y">Aktiv</option>
+                          <option value="n">Non</option>
+                        </select>
                     </div>
-                </div>
+                  </div>
+               
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Score </label>
+                       <input type="text" class="form-control" name="score" value="{{ $item->score }}" required />
+                    </div>
+                  </div>
+               
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Soal Id </label>
+                      <select name="id" required class="form-control">
+                        @foreach ($soal as $soal)
+                          <option value="{{ $soal->id }}">{{ $soal->deksripsi }}</option>
+                        @endforeach
+                        </select>
+                    </div>
+                  </div>
+               
+                             
                 </div>
                 <div class="row">
                   <div class="col text-right">
@@ -117,15 +130,9 @@
 </div>
 @endsection
 
-
 @push('addon-script')
   <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
   <script>
     CKEDITOR.replace('editor');
-    CKEDITOR.replace('editor1');
-    CKEDITOR.replace('editor2');
-    CKEDITOR.replace('editor3');
-    CKEDITOR.replace('editor4');
-    CKEDITOR.replace('editor5');
   </script>
 @endpush

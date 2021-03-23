@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\PendidikanLain;
 use App\Http\Requests\Admin\PendidikanLainRequest;
-
+use App\Biodata;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -76,8 +77,19 @@ class PendidikanLainController extends Controller
      */
     public function store(PendidikanLainRequest $request)
     {
-        $data = $request->all();
-        PendidikanLain::create($data);
+        // $data = $request->all();
+        // PendidikanLain::create($data);
+
+        $biodata1 = Biodata::where('users_id', '=', Auth::user()->id)->first();
+
+        PendidikanLain::create([
+        'Nama_Lembaga'  => $request->Nama_Lembaga,
+        'Tahun'  =>  $request->Tahun,
+        'Jurusan'  =>  $request->Jurusan,
+        'Tingkat'  =>  $request->Tingkat,
+        // 'users_id' => Auth::user()->id,
+        'biodatas_id' =>  $biodata1->id,
+        ]);
 
         return redirect()->route('pendidikannonformal.index');
     }
@@ -103,7 +115,7 @@ class PendidikanLainController extends Controller
     {
         $item = PendidikanLain::findOrFail($id);
 
-        return view('pages.user.pendidikan_formal.edit',[
+        return view('pages.user.pendidikanlain.edit',[
             'item' => $item
         ]);
     }

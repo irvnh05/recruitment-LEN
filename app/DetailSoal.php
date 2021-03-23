@@ -19,7 +19,7 @@ class DetailSoal extends Model
         
     ];
     public function soal(){
-        return $this->belongsTo( Soal::class, 'soals_id', 'id');
+        return $this->belongsTo( Soal::class, 'soals_id', 'id')->withTrashed();
     }
     	public function checkJawab()
 	{

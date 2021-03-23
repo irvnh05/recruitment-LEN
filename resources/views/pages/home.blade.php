@@ -117,7 +117,7 @@ E-Recruitment | PT.LEN
                 <div class="col-lg-6">
                     <div class="section-title text-center pb-10">
                         <h4 class="title">Pengumuman</h4>
-                        <p class="text">Memberikan sebuah informasi resmi dari kamu untuk kalian penerima informasi!</p>
+                        <p class="text">Memberikan sebuah informasi resmi dari kami untuk kalian penerima informasi!</p>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->

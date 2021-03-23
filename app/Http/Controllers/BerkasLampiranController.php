@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Lampiran;
 // use App\Http\Requests\Admin\BerkasRequest;
+use App\Biodata;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Str;
@@ -76,8 +77,17 @@ class BerkasLampiranController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        Lampiran::create($data);
+        // $data = $request->all();
+        // Lampiran::create($data);
+        $biodata1 = Biodata::where('users_id', '=', Auth::user()->id)->first();
+
+        Lampiran::create([
+        'Nama_Lampiran'  => $request->Nama_Lampiran	,
+        'Lampiran'  =>  $request->Lampiran,
+        'Nama_Institusi'  =>  $request->Nama_Institusi,
+        // 'users_id' => Auth::user()->id,
+        'biodatas_id' =>  $biodata1->id,
+        ]);
 
         return redirect()->route('lampiran.index');
     }

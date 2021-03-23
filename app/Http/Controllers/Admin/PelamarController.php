@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Bahasa;
 use App\Http\Controllers\Controller;
 use App\Berkas;
 use App\Http\Requests\Admin\BerkasRequest;
 use App\Jawab;
 use App\Biodata;
 use App\DataKeluarga;
+use App\Harapan;
+use App\InfoLain;
 use App\Lampiran;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\StatusSuccess;
+use App\PendidikanFormal;
+use App\PendidikanLain;
 use App\PengalamanKerja;
+use App\PengalamanOrganisasi;
+use App\Proses_Sel_Prsh_Lain;
+use App\ProsesPengBeasiswa;
+use App\SdrKwnLen;
 use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Str;
 // use Illuminate\Support\Facades\Storage;
@@ -122,18 +131,44 @@ class PelamarController extends Controller
         ->where('biodatas_id', $id)->get();
         $berkas = Lampiran::with((['biodata']))
         ->where('biodatas_id', $id)->get();
-        
+        $formal = PendidikanFormal::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+        $non = PendidikanLain::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+        $bahasa = Bahasa::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+        $beasiswa = ProsesPengBeasiswa::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+        $organisasi = PengalamanOrganisasi::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+        $harapan = Harapan::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+        $infolain = InfoLain::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+        $sdrkwnlen = SdrKwnLen::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+        $seleksiperusahaanlain = Proses_Sel_Prsh_Lain::with((['biodata']))
+        ->where('biodatas_id', $id)->get();
+
         
         
         // ->whereHas('users_id', auth()->user()->id)->get();
 
         // dd($item);
         return view('pages.admin.pelamar.show',[
-            'item' => $item,
-            'kerja' => $kerja,
-            'keluarga' => $keluarga,
-            'berkas' => $berkas
-
+            'item'                   => $item,
+            'kerja'                  => $kerja,
+            'keluarga'               => $keluarga,
+            'berkas'                 => $berkas,
+            'formal'                 => $formal,
+            'non'                    => $non,
+            'bahasa'                 => $bahasa,
+            'beasiswa'               => $beasiswa, 
+            'organisasi'             => $organisasi,
+            'harapan'                => $harapan,
+            'infolain'               => $infolain,
+            'sdrkwnlen'              => $sdrkwnlen,
+            'seleksiperusahaanlain'  => $seleksiperusahaanlain, 
         ]);
     }
     

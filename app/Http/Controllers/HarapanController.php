@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Harapan;
 use App\Http\Requests\Admin\HarapanRequest;
-
+use App\Biodata;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -78,9 +79,17 @@ class HarapanController extends Controller
      */
     public function store(HarapanRequest $request)
     {
-        $data = $request->all();
-        Harapan::create($data);
+        // $data = $request->all();
+        // Harapan::create($data);
 
+        $biodata1 = Biodata::where('users_id', '=', Auth::user()->id)->first();
+        Harapan::create([
+            'Harapan_Karir'  => $request->Harapan_Karir,
+            'Permintaan_Gaji'  =>  $request->Permintaan_Gaji,
+            'Minat_Posisi_Jika_Ditolak'  =>  $request->Minat_Posisi_Jika_Ditolak,
+            // 'users_id' => Auth::user()->id,
+            'biodatas_id' =>  $biodata1->id,
+            ]);
         return redirect()->route('pengalamanorganisasi.index');
     }
 

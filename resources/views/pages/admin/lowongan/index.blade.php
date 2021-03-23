@@ -31,7 +31,7 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Posisi</th>
                                         {{-- <th>Gaji</th>
                                         <th>Deksripsi</th>
@@ -72,7 +72,7 @@
                 url: '{!! url()->current() !!}',
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'posisi', name: 'posisi' },
                 // { data: 'gaji', name: 'gaji' },
                 // { data: 'deksripsi', name: 'deksripsi' },

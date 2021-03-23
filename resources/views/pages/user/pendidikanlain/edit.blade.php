@@ -12,9 +12,9 @@
 >
   <div class="container-fluid">
     <div class="dashboard-heading">
-        <h2 class="dashboard-title">Data Pendidikan Formal</h2>
+        <h2 class="dashboard-title">Data Pendidikan Non Formal</h2>
         <p class="dashboard-subtitle">
-            Edit "{{ $item->Nama_Perusahaan }}" Data Pendidikan Formal
+            Edit "{{ $item->Nama_Lembaga }}" Data Pendidikan Non Formal
         </p>
     </div>
     <div class="dashboard-content">
@@ -29,7 +29,7 @@
                   </ul>
               </div>
           @endif
-          <form action="{{ route('pendidikanformal.update', $item->id) }}" method="post" enctype="multipart/form-data">
+          <form action="{{ route('pendidikannonformal.update', $item->id) }}" method="post" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="card">
@@ -44,30 +44,31 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Tahun</label>
-                      <input type="date" class="form-control" name="Tahun" value="{{ $item->Tahun }}"  />
+                      <input type="text" class="form-control" name="Tahun" value="{{ $item->Tahun }}"  />
                        <small>Kosongkan jika tidak ingin mengganti password</small>
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Jurusan</label>
+                      <label>Bidang Keilmuan</label>
                       <input type="text" class="form-control" name="Jurusan" value="{{ $item->Jurusan }}" />
                       <small>Kosongkan jika tidak ingin mengganti password</small>
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Tingkat</label>
-                      <input type="number" class="form-control" name="Tingkat" value="{{ $item->Tingkat }}" />
+                      <label>Keterangan</label>
+                      <input type="text" class="form-control" name="Tingkat" value="{{ $item->Tingkat }}" />
                       <small>Kosongkan jika tidak ingin mengganti password</small>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col text-right">
+                  <a href="{{ url()->previous() }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>Kembali</a>
                     <button
                       type="submit"
-                      class="btn btn-success px-5"
+                      class="btn btn-primary px-5"
                     >
                       Save Now
                     </button>

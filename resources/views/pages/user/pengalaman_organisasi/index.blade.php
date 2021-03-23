@@ -29,7 +29,7 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Jabatan</th>
                                         <th>Nama Organisasi</th>
                                         <th>Aksi</th>
@@ -70,7 +70,7 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable1">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Harapan Karir</th>
                                         <th>Permintaan Gaji</th>
                                         <th>Minat Posisi Jika Ditolak</th>
@@ -112,7 +112,7 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable2">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Nama Lengkap</th>
                                         <th>Hubungan</th>
                                         <th>Bagian</th>
@@ -154,7 +154,7 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable3">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Melamar Melalui</th>
                                         <th>Di Perkenalkan Oleh</th>
                                         <th>Kegiatan Lain</th>
@@ -187,7 +187,7 @@
                  url: "{{ route('pengalamanorganisasi.index') }}",
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'Jabatan', name: 'Jabatan' },
                 { data: 'Nama_Organisasi', name: 'Nama_Organisasi' },
                 {
@@ -216,7 +216,7 @@
                  url: "{{ route('harapan.index') }}",
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'Harapan_Karir', name: 'Harapan_Karir' },
                 { data: 'Permintaan_Gaji', name: 'Permintaan_Gaji' },
                 { data: 'Minat_Posisi_Jika_Ditolak', name: 'Minat_Posisi_Jika_Ditolak' },
@@ -247,7 +247,7 @@
                  url: "{{ route('keluarga.index') }}",
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'Nama_Lengkap', name: 'Nama_Lengkap' },
                 { data: 'Hubungan', name: 'Hubungan' },
                 { data: 'Bagian', name: 'Bagian' },
@@ -278,7 +278,7 @@
                  url: "{{ route('infolain.index') }}",
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'Melamar_Melalui', name: 'Melamar_Melalui' },
                 { data: 'Diperkenalkan_Oleh', name: 'Diperkenalkan_Oleh' },
                 { data: 'Kegiatan_Lain', name: 'Kegiatan_Lain' },

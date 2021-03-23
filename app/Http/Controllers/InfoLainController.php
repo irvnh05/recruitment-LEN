@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\InfoLain;
 use App\Http\Requests\Admin\InfoLainRequest;
-
+use App\Biodata;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -78,8 +79,17 @@ class InfoLainController extends Controller
      */
     public function store(InfoLainRequest $request)
     {
-        $data = $request->all();
-        InfoLain::create($data);
+        // $data = $request->all();
+        // InfoLain::create($data);
+        $biodata1 = Biodata::where('users_id', '=', Auth::user()->id)->first();
+        InfoLain::create([
+            'Melamar_Melalui'  => $request->Melamar_Melalui,
+            'Diperkenalkan_Oleh'  =>  $request->Diperkenalkan_Oleh,
+            'Kegiatan_Lain'  =>  $request->Kegiatan_Lain,
+            'Hobi'  =>  $request->Hobi,
+            // 'users_id' => Auth::user()->id,
+            'biodatas_id' =>  $biodata1->id,
+            ]);
 
         return redirect()->route('pengalamanorganisasi.index');
     }

@@ -10,6 +10,7 @@
   <script src="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('/dashboardv1/docs/assets/js/main.js') }}"></script>
   <script src="{{ asset('/dashboard/docs/js/jquery.min.js') }}"></script>
+  
   <script
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -28,5 +29,12 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
       });
+    </script>
+    <script>
+    $("#datepicker").datepicker({
+      format      : " yyyy",
+      viewMode    : "years",
+      minViewMode : "years"
+    });
     </script>
     @stack('addon-script')

@@ -29,7 +29,7 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Nama Lembaga</th>
                                         <th>Tahun</th>
                                         <th>Jurusan</th>
@@ -72,11 +72,11 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable1">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Nama Lembaga</th>
                                         <th>Tahun</th>
-                                        <th>Jurusan</th>
-                                        <th>Tingkat</th>
+                                        <th>Bidang Keilmuan</th>
+                                        <th>Keterangan</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -115,7 +115,7 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable2">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Bahasa</th>
                                         <th>Lisan</th>
                                         <th>Tulisan</th>
@@ -157,9 +157,9 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable3">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Beasiswa</th>
-                                        <th>Tempat</th>
+                                        <!-- <th>ID</th> -->
+                                        <th>Lembaga Beasiswa</th>
+                                        <th>Tahun</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -188,7 +188,7 @@
                  url: "{{ route('pendidikanformal.index') }}",
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'Nama_Lembaga', name: 'Nama_Lembaga' },
                 { data: 'Tahun', name: 'Tahun' },
                 { data: 'Jurusan', name: 'Jurusan' },
@@ -219,7 +219,7 @@
                  url: "{{ route('pendidikannonformal.index') }}",
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'Nama_Lembaga', name: 'Nama_Lembaga' },
                 { data: 'Tahun', name: 'Tahun' },
                 { data: 'Jurusan', name: 'Jurusan' },
@@ -251,7 +251,7 @@
                  url: "{{ route('bahasa.index') }}",
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'Bahasa', name: 'Bahasa' },
                 { data: 'Lisan', name: 'Lisan' },
                 { data: 'Tulisan', name: 'Tulisan' },
@@ -282,7 +282,7 @@
                  url: "{{ route('beasiswa.index') }}",
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'Lembaga', name: 'Lembaga' },
                 { data: 'Tempat', name: 'Tempat' },
                 {

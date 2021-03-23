@@ -44,7 +44,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Tahun</label>
-                      <input type="date" class="form-control" name="Tahun" value="{{ $item->Tahun }}"  />
+                      <input type="text" class="form-control" name="Tahun" value="{{ $item->Tahun }}"  />
                        <small>Kosongkan jika tidak ingin mengganti password</small>
                     </div>
                   </div>
@@ -72,9 +72,10 @@
                 </div>
                 <div class="row">
                   <div class="col text-right">
+                  <a href="{{ url()->previous() }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>Kembali</a>
                     <button
                       type="submit"
-                      class="btn btn-success px-5"
+                      class="btn btn-primary px-5"
                     >
                       Save Now
                     </button>

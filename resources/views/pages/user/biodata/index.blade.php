@@ -200,6 +200,7 @@
                 <div class="row mt-4">
                   <div class="col-12 text-right">
                   <div class="col text-right">
+                  <a href="{{ url()->previous() }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>Kembali</a>
                     <button
                       type="submit"
                       class="btn btn-primary px-5"

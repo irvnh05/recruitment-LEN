@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\PendidikanFormal;
 use App\Http\Requests\Admin\PendidikanFormalRequest;
-
+use App\Biodata;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -76,8 +77,18 @@ class PendidikanFormalController extends Controller
      */
     public function store(PendidikanFormalRequest $request)
     {
-        $data = $request->all();
-        PendidikanFormal::create($data);
+        // $data = $request->all();
+        // PendidikanFormal::create($data);
+        $biodata1 = Biodata::where('users_id', '=', Auth::user()->id)->first();
+
+        PendidikanFormal::create([
+        'Nama_Lembaga'  => $request->Nama_Lembaga,
+        'Tahun'  =>  $request->Tahun,
+        'Jurusan'  =>  $request->Jurusan,
+        'Tingkat'  =>  $request->Tingkat,
+        // 'users_id' => Auth::user()->id,
+        'biodatas_id' =>  $biodata1->id,
+        ]);
 
 
         return redirect()->route('pendidikanformal.index');

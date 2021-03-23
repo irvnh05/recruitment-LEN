@@ -29,7 +29,7 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Nama Lengkap</th>
                                         <th>Tempat,tanggal lahir</th>
                                         <th>Hubungan</th>
@@ -62,7 +62,7 @@
                 url: '{!! url()->current() !!}',
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'Nama_Lengkap', name: 'Nama_Lengkap' },
                 { data: 'TTL', name: 'TTL' },
                 { data: 'Hubungan', name: 'Hubungan' },

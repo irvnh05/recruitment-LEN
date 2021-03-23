@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Bahasa;
 use App\Http\Requests\Admin\BahasaRequest;
-
+use App\Biodata;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -76,8 +77,17 @@ class BahasaController extends Controller
      */
     public function store(BahasaRequest $request)
     {
-        $data = $request->all();
-        Bahasa::create($data);
+        // $data = $request->all();
+        // Bahasa::create($data);
+        $biodata1 = Biodata::where('users_id', '=', Auth::user()->id)->first();
+
+        Bahasa::create([
+        'Bahasa'  => $request->Bahasa,
+        'Lisan'  =>  $request->Lisan,
+        'Tulisan'  =>  $request->Tulisan,
+        // 'users_id' => Auth::user()->id,
+        'biodatas_id' =>  $biodata1->id,
+        ]);
 
         return redirect()->route('pendidikannonformal.index');
     }

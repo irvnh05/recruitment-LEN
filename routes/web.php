@@ -82,7 +82,10 @@ Route::prefix('admin')
         Route::resource('pengumuman','PengumumanController');
         Route::resource('soal','SoalController');
         Route::resource('pelamar','PelamarController');      
-        Route::resource('report','ReportController');    
+        Route::resource('report','ReportController');  
+        Route::put('/update/{id}', 'SoalController@updatedetail')->name('soaldetailupdate');
+        Route::delete('/delete/{id}', 'SoalController@destroydetailsoal')->name('deletedetailsoal');  
+        Route::get('/edit/{id}', 'SoalController@editdetail')->name('soal.editdetail');
         Route::get('/result/{id}', 'PelamarController@result')->name('pelamar.result');
         Route::get('/return', 'ReportController@returnReport')->name('report.return');
         Route::get('/return/pdf/{daterange}', 'ReportController@returnReportPdf')->name('report.return_pdf');

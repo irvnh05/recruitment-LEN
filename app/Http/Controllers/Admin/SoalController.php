@@ -151,6 +151,20 @@ class SoalController extends Controller
         ]);
     }
 
+    public function editdetail($id)
+    {
+        $item = DetailSoal::findOrFail($id);
+        $soal = Soal::with(['user'])->where('tampil','aktiv')->get();
+        // $soal = DetailSoal::with(['soal']) ->whereHas('soal', function($soal){
+        //     $soal->where('tampil','aktiv');
+        // })->get();
+        // dd($soal);
+        return view('pages.admin.soal.editdetail',[
+            'item' => $item,
+            'soal' => $soal,
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -169,6 +183,17 @@ class SoalController extends Controller
         return redirect()->route('soal.index');
     }
 
+    public function updatedetail(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $item = DetailSoal::findOrFail($id);
+
+        $item->update($data);
+
+        return redirect()->route('detail-soal',$item->soals_id);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -184,6 +209,14 @@ class SoalController extends Controller
 
     }
 
+    public function destroydetailsoal($id)
+    {
+
+        $item = DetailSoal::findorFail($id);
+        $item->delete();
+
+        return redirect()->route('detail-soal', $item->soals_id);
+    }
       public function detail(Request $request)
   {
     // if (Auth::user()->status == 'G' or Auth::user()->status == 'A') {
@@ -223,13 +256,10 @@ class SoalController extends Controller
                                         Aksi
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="action' .  $item->id . '">
-                                    <a class="dropdown-item" href="' . route('detail-soal', $item->id) . '">
-                                        Detail
-                                    </a>
-                                    <a class="dropdown-item" href="' . route('soal.edit', $item->id) . '">
+                                    <a class="dropdown-item" href="' . route('soal.editdetail', $item->id) . '">
                                         Sunting
                                     </a>
-                                    <form action="' . route('soal.destroy', $item->id) . '" method="POST">
+                                    <form action="' . route('deletedetailsoal', $item->id) . '" method="POST">
                                         ' . method_field('delete') . csrf_field() . '
                                         <button type="submit" class="dropdown-item text-danger">
                                             Hapus

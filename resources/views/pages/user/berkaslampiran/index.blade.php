@@ -32,7 +32,7 @@
 
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Nama Lampiran</th>
                                         <th>Lampiran</th>
                                         <th>Nama Institusi</th>
@@ -62,7 +62,7 @@
                 url: '{!! url()->current() !!}',
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'Nama_Lampiran', name: 'Nama_Lampiran' },
                 { data: 'Lampiran', name: 'Lampiran' },
                 { data: 'Nama_Institusi', name: 'Nama_Institusi' },

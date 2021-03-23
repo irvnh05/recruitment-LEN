@@ -51,10 +51,7 @@ class DataKeluargaController extends Controller
                             </div>
                     </div>';
                 })
-                ->editColumn('photos', function ($item) {
-                    return $item->photos ? '<img src="' . Storage::url($item->photos) . '" style="max-height: 80px;"/>' : '';
-                })
-                ->rawColumns(['action','photos'])
+                ->rawColumns(['action'])
                 ->make();
         }
 

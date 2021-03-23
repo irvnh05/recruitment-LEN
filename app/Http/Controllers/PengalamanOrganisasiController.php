@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\PengalamanOrganisasi;
 use App\Http\Requests\Admin\PengalamanOrganisasiRequest;
-
+use App\Biodata;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -78,9 +79,16 @@ class PengalamanOrganisasiController extends Controller
      */
     public function store(PengalamanOrganisasiRequest $request)
     {
-        $data = $request->all();
-        PengalamanOrganisasi::create($data);
-
+        // $data = $request->all();
+        // PengalamanOrganisasi::create($data);
+        $biodata1 = Biodata::where('users_id', '=', Auth::user()->id)->first();
+        PengalamanOrganisasi::create([
+            'Nama_Organisasi'  => $request->Nama_Organisasi,
+            'Jabatan'  =>  $request->Jabatan,
+            // 'users_id' => Auth::user()->id,
+            'biodatas_id' =>  $biodata1->id,
+            ]);
+    
         return redirect()->route('pengalamanorganisasi.index');
     }
 

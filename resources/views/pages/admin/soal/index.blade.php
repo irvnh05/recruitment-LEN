@@ -29,9 +29,9 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Dekripsi</th>
-                                        <th>KKM</th>
+                                        <th>Nilai</th>
                                         <th>Waktu</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
@@ -60,7 +60,7 @@
                 url: '{!! url()->current() !!}',
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'deksripsi', name: 'deksripsi' },
                 { data: 'kkm', name: 'kkm' },
                 { data: 'waktu', name: 'waktu' } ,

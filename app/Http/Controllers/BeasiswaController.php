@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\ProsesPengBeasiswa;
 use App\Http\Requests\Admin\BeasiswaRequest;
-
+use App\Biodata;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -76,8 +77,17 @@ class BeasiswaController extends Controller
      */
     public function store(BeasiswaRequest $request)
     {
-        $data = $request->all();
-        ProsesPengBeasiswa::create($data);
+        // $data = $request->all();
+        // ProsesPengBeasiswa::create($data);
+
+        $biodata1 = Biodata::where('users_id', '=', Auth::user()->id)->first();
+
+        ProsesPengBeasiswa::create([
+        'Lembaga'  => $request->Lembaga,
+        'Tempat'  =>  $request->Tempat,
+        // 'users_id' => Auth::user()->id,
+        'biodatas_id' =>  $biodata1->id,
+        ]);
 
         return redirect()->route('pendidikannonformal.index');
     }

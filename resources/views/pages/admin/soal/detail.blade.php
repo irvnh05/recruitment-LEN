@@ -8,7 +8,7 @@
     >
     <div class="container-fluid">
         <div class="dashboard-heading">
-            <h2 class="dashboard-title">Soal</h2>
+            <h2 class="dashboard-title">Soal Detail {{$soal->deksripsi}}</h2>
             {{-- <p class="dashboard-subtitle">
                 List of User
             </p> --}}
@@ -30,7 +30,7 @@
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th> -->
                                         <th>Pertanyaan</th>
                                         {{-- <th>pila</th>
                                         <th>pilb</th>
@@ -67,10 +67,10 @@
                 url: '{!! url()->current() !!}',
             },
             columns: [
-                { data: 'id', name: 'id' },
+                // { data: 'id', name: 'id' },
                 { data: 'pertanyaan', name: 'pertanyaan' },
                 { data: 'kunci', name: 'kunci' },
-                { data: 'status', name: 'status' } ,
+                { data: 'status', name: 'status'  } ,
                 { data: 'score', name: 'score' } ,
                 {
                     data: 'action',
