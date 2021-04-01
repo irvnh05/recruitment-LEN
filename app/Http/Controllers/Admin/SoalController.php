@@ -24,7 +24,7 @@ class SoalController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $query = Soal::with(['user'])->where('tampil','aktiv');
+            $query = Soal::with(['user']);
 
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {

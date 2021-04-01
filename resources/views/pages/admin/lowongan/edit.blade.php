@@ -51,7 +51,8 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>Deksripsi</label>
-                         <textarea name="deksripsi" id="editor" value="{{ $item->deksripsi }}"></textarea>
+                      <textarea name="deksripsi" id="editor" >{{ $item->deksripsi }}</textarea>
+                         <!-- <textarea name="deksripsi" id="editor" value="{{ $item->deksripsi }}"></textarea> -->
                       <small>Kosongkan jika tidak ingin mengganti </small>
                     </div>
                   </div>

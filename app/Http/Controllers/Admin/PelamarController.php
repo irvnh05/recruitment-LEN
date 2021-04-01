@@ -235,10 +235,13 @@ class PelamarController extends Controller
             'user', 'detailSoal'
            ])->where('users_id', $id)->get();
   
+        //    return $this->cart()->products()->sum('price');
+           $total = $cek->sum('score');
         // $cek = Jawab::where('soals_id', $id)->where('users_id', auth()->user()->id);
-        // dd($cek);
+        // dd($total);
         return view('pages.admin.pelamar.detail',[
-            'cek' => $cek
+            'cek' => $cek,
+            'total' => $total
         ]);
     }
 

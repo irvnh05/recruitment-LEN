@@ -87,6 +87,19 @@
           </div>
         </section>
 
+        <section class="store-description">
+                </br>
+          <div class="container">
+            <div class="row">
+             <div class="col-12 col-lg-8">
+             Lebih Diutamakan: 
+                <h5> {!! $lowongan->kriteria_penting !!}</h5>
+              </div>
+            </div>
+    
+          </div>
+        </section>
+
       </div>
     </div>    </br></br></br></br></br></br>
 @endsection

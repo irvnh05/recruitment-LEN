@@ -614,8 +614,8 @@
                       <div class="col-12 col-md-6">
                         <div class="product-title">Lampiran</div>
                         <div class="product-subtitle">
-                        <a ="{{ route('download',$name->file) }}"> Download  </a>
-                         <!-- <input type="text" class="form-control" name="Lampiran" value="{{ $berkas1->Lampiran }}" required disabled/>               -->
+
+                         <!-- <input type="text" class="form-control" name="Lampiran" value="{{ $berkas1->file }}" required disabled/>               -->
                         </div>
                       </div>
                       <div class="col-12 col-md-6">

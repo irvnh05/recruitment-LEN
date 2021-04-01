@@ -119,7 +119,7 @@ class LowonganController extends Controller
     {
         $item = Lowongan::with(['program'])->findOrFail($id);
         $programs = Program::all();
-        
+        // dd($item);
         return view('pages.admin.lowongan.edit',[
             'item' => $item,
             'programs' => $programs

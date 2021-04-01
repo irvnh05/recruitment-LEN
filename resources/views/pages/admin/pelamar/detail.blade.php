@@ -31,32 +31,43 @@
                                 
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                                     <thead>
+                                        
                                     <tr>
-                                         <th>Kode Soal</th> 
+                                         <th>Soal</th> 
                                          <th>Pertanyaan</th>            
-                                         <th>Jawaban</th> 
+                                         <th>Jawaban</th>
+                                         <th>Kunci</th> 
                                          <th>Score</th>                                    
-                                         <th>Kunci</th>    
+                                         <!-- <th>Kunci</th>     -->
+
                                     </tr>
                                     </thead>
+                                    
                                     <tbody>
                 
                                     @forelse($cek as $item)
                           <tr>              
                                <!-- <td>{{ $item->id }}</td> -->
-                               <td>{{ $item->soals_id }}</td>
+                               <td>{{ $item->detailSoal->soal->deksripsi }}</td>
                                <td>{{ $item->detailSoal->pertanyaan }}</td>
                                <td>{{ $item->pilihan }}</td>
-                               <td>{{ $item->score }}</td>      
+                               <!-- <td>{{ $item->score }}</td>       -->
                                <td>{{ $item->detailSoal->kunci }}</td>      
+                               <td>{{ $item->score }}</td>    
                                                        
                                        </tr>
+                                       
                                         @empty
                                         <tr>
                                             <td colspan="6" class="text-center">Tidak ada data</td>
                                         </tr>
                                         @endforelse 
                                     </tbody>
+                                    <tr>
+      <th colspan="4" >Score Akhir</th>
+      <th>{{ $total }}</th>
+
+     </tr>
                                 </table>
                             </div>
                         </div>

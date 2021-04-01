@@ -52,7 +52,12 @@
                      <input type="number" name="waktu" class="form-control" required />
                     </div>
                   </div>
- 
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Status</label>
+                     <input type="number" name="tampil" class="form-control" required />
+                    </div>
+                  </div>
   
                 </div>
                 <div class="row">
